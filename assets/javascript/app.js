@@ -18,7 +18,8 @@ $.ajax({
 var queryBusiness = "https://api.yelp.com/v3/businesses/ApIPybnarwxkzBgbYegVWQ";
 var clientID = "ApIPybnarwxkzBgbYegVWQ";
 var apiKey = "IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx";
-var userInput = "los angeles";
+var userInput="";
+
 var settings = {
     "async": true,
     "crossDomain": true,
@@ -32,6 +33,7 @@ var settings = {
   }
 $.ajax(settings).done(function (response) {
   console.log(response);
+  console.log(userInput);
 });
       var results = response.data;
       for (let i = 0; i < results.length; i++) {
@@ -41,4 +43,3 @@ $.ajax(settings).done(function (response) {
           newDiv.append(img);
           $("#test").append(newDiv);
       };
- 
