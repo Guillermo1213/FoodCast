@@ -1,19 +1,33 @@
+$(document).ready(function(){
+
+
+
+    
+$("#searchBtn").on ("click", function(event){
+event.preventDefault();
+var userInput = $("#user-input").val().trim();
 //Image pull from IG//
 var queryIG = "https://api.instagram.com/v1/users/self/media/recent/?access_token=4690252769.28b47d3.6f17a44a78ba443aadc67bb56ef3b159";
-    
+
 $.ajax({
-  url: queryIG,
-  method: "GET"
+url: queryIG,
+method: "GET"
 }).then(function(response) {
-    var results = response.data;
-    for (let i = 0; i < results.length; i++) {
-        var image = results[i].images.standard_resolution.url;
-        var img = $("<img>").attr("src", image)   
-        var newDiv = $("<div>")
-        newDiv.append(img); 
-        $("#test").append(newDiv);
+
+var results = response.data;
+for (var i = 0; i < results.length; i++) {
+  var instaDiv = $("<div>");
+  var instaImage = $("<img>");  
+  instaImage.attr("src", results[i].images.standard_resolution.url);
+    
+  instaDiv.append(instaImage); 
+  $("#results_display").append(instaDiv);
+    
     };
+  });
 });
+
+
 //Yelp: Comments, location, ratings, price range//
 var queryBusiness = "https://api.yelp.com/v3/businesses/ApIPybnarwxkzBgbYegVWQ";
 var clientID = "ApIPybnarwxkzBgbYegVWQ";
@@ -43,3 +57,6 @@ $.ajax(settings).done(function (response) {
           newDiv.append(img);
           $("#test").append(newDiv);
       };
+
+});//End of document ready fucntion
+ 
