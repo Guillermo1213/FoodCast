@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <sript src=https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js> </sript> <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Results</title>
+</head>
+<body>
+    <div id="viewport">
+        <div id="fav_section">
+            <header>
+                InstaFare
+                <img class="img-fluid" src="https://dummyimage.com/50x50/000/fff" alt="app_logo">
+                <h6>Restaurants you like will appear in your favorites section, click on their tab to see more
+                    about them!</h6>
+            </header>
+            <div class="card-columns">
+                <!-- The following divs or "favorites tabs" will have to be added dynamically with js by pulling data from the liked event-->
+                <div class="card favorite">
+                    <div class="card-body">
+                        <img class="img-fluid favorite_img" src="https://dummyimage.com/50x50/000/fff" alt="ig_profile">
+                        <p class="card-title">GreenEggs & Ham</p>
+                        <p class="card-text">This restaurant is super cool.</p>
+                    </div>
+                </div>
+                <div class="card favorite">
+                    <div class="card-body">
+                        <img class="img-fluid favorite_img" src="https://dummyimage.com/50x50/000/fff" alt="ig_profile">
+                        <p class="card-title">GreenEggs & Ham</p>
+                        <p class="card-text">This restaurant is super cool.</p>
+                    </div>
+                </div>
+                <div class="card favorite">
+                    <div class="card-body">
+                        <img class="img-fluid favorite_img" src="https://dummyimage.com/50x50/000/fff" alt="ig_profile">
+                        <p class="card-title">GreenEggs & Ham</p>
+                        <p class="card-text">This restaurant is super cool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="results_display">
+            <img class="img-fluid" src="https://dummyimage.com/200x300/000/fff" alt="ig_profile">
+            <div id="button_container">
+                <button type="button" class="btn btn-danger">&#x1F637</button>
+                <button type="button" class="btn btn-info">&#x1F60D</button>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Change back to js instead of javascript, I changed it while I had no access to original -->
+<script src="assets\javascript\app.js"></script>
+</html>
