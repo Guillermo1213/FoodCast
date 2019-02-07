@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 //Image pull from IG//
 var queryIG = "https://api.instagram.com/v1/users/self/media/recent/?access_token=4690252769.28b47d3.6f17a44a78ba443aadc67bb56ef3b159";
     
@@ -41,4 +43,6 @@ $.ajax(settings).done(function (response) {
           newDiv.append(img);
           $("#test").append(newDiv);
       };
+
+});//End of document ready fucntion
  
