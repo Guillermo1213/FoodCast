@@ -1,0 +1,78 @@
+.jumbotron {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 0px;
+    background-image: url(https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+/* input{
+    max-width: 80%;
+    margin: auto;
+    padding: 
+} */
+.add-on .input-group-btn > .btn {
+    border-left-width:0;left:-2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+  /* stop the glowing blue shadow */
+  .add-on .form-control:focus {
+   box-shadow:none;
+   -webkit-box-shadow:none; 
+   border-color:#cccccc; 
+  }
+h1{
+    font-weight: bold;
+}
+.bold{
+    font-weight: bolder;
+}
+#app_present{
+}
+#app_info{
+    margin: 20px;
+    text-align: left;
+    float: left;
+}
+#app_screenshot{
+    margin: 20px;
+    text-align: center;
+    float:right;
+}
+/* The following will be mostly for results page */
+#viewport{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+#results_display{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid black;
+    flex-basis: 70%;
+    
+}
+#fav_section{
+border: 3px solid black;
+flex-basis: 30%;
+justify-content: space-evenly;
+}
+.card-columns{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.favorite{
+max-width: 100%;
+}
+#button_container{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 3%;
+    border: 3px solid black;
+}
