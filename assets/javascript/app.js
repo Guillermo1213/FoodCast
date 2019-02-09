@@ -80,7 +80,24 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response) {
             console.log(response);
-            
+
+            var results = response.businesses;
+
+            for (let i = 0; i < results.length; i++) {
+                var yelpDiv = $("<div>");
+                var yelpImage = $("<img>");
+                yelpImage.attr("src", results[i].image_url);
+                console.log(results[i].image_url);
+                $(".card-img-top").append(yelpImage) 
+                var name = $("<p>").text("Name: " + results[i].name);
+                var rating = $("<p>").text("Raiting: " + results[i].rating);
+                var price = $("<p>").text("Price: " + results[i].price);  
+                var location = $("<p>").text("Location: " + results[i].location.address1);
+                
+                yelpDiv.append(name,rating,price,location,);
+                $(".card-body").append(yelpDiv);
+           
+          };
 
             })
 
