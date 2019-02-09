@@ -25,7 +25,7 @@ $(document).ready(function(){
             
             //Store the info that Object gives out in variables to make it easier to manipulate:
             var resultCityName = response.name;
-            var weatherDescription = response.weather[0].description;
+            var weatherDescription = (response.weather[0].description).toUpperCase();
 
             //Convert temperature string in Object into integer, to plug into calculation:
             var mainTemp = parseInt(response.main.temp);
@@ -42,6 +42,7 @@ $(document).ready(function(){
 
             //Grab ID and attach temperatures to display on HTML:
             $("#resultCityName").text(resultCityName);
+            $("#currentWeather").text(weatherDescription);
             $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
             $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel+ '\xB0C' );
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
