@@ -1,0 +1,53 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#header{
+    display: inline-flex;
+    float: left;
+    margin: 2%;
+}
+
+.logo{
+    margin: 2%;
+    color: aliceblue;
+}
+
+#search_area{
+    display: inline-flex;
+    justify-content: center;
+}
+
+.form-control{
+    max-width: 40vw;
+}
+
+.jumbotron{
+    margin: 0 0;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    background: url(https://png.pngtree.com/thumb_back/fw800/back_pic/04/15/56/675822d6fc95042.jpg);
+}
+
+#lower_display{
+    display: flex;
+    padding: 15vh;
+    justify-content: center;
+    background: url(https://images.pexels.com/photos/110874/pexels-photo-110874.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+}
+
+#restaurant_cards{
+    margin: 10%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.card{
+    margin: 5%;
+}
+
+#search_results{
+    display: none;
+}
