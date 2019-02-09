@@ -55,10 +55,8 @@ $(document).ready(function(){
 
             function hotOrCold(currentFah){
                 if (currentFah >= 65){
-                    var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
                     return randHot;
                 } else if (currentFah < 65) {
-                    var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
                     return randCold;
                 };    
             }
@@ -83,25 +81,35 @@ $(document).ready(function(){
             var results = response.businesses;
 
             for (let i = 0; i < results.length; i++) {
-                var yelpDiv = $("<div>");
                 var yelpImage = $("<img>");
-                yelpImage.attr("src", results[i].image_url);
-                console.log(results[i].image_url);
-                $(".card-img-top").append(yelpImage) 
+                yelpImage.attr ({
+                    "src": results[i].image_url,
+                    "class": "card-img-top",
+                    "height": "200",
+                    "width": "300"
+                });
+
+                $("#yelpCard").append(yelpImage) ;
+
+                var yelpDiv = $("<div>").attr({
+                    "class": "card-body",
+                    "id": "yelpInfo"
+                });
+
                 var name = $("<p>").text("Name: " + results[i].name);
                 var rating = $("<p>").text("Raiting: " + results[i].rating);
                 var price = $("<p>").text("Price: " + results[i].price);  
                 var location = $("<p>").text("Location: " + results[i].location.address1);
                 
                 yelpDiv.append(name,rating,price,location,);
-                $(".card-body").append(yelpDiv);
+                $("#yelpCard").append(yelpDiv);
            
-          };
+            };
 
-            })
+        })
            
-        }); 
-    });
+    }); 
+});
 
     //The Weather API gives out temperature in Kelvin, we need to convert it to Fahrenheit and Celcius
     function kelToF(kelvin) {
