@@ -42,12 +42,9 @@ $(document).ready(function(){
 
             //Grab ID and attach temperatures to display on HTML:
             $("#resultCityName").text(resultCityName);
-            $("#currentFah").text(currentFah + '\xB0F');
-            $("#currentCel").text(currentCel + '\xB0C');
-            $('#highFah').text(highFah + '\xB0F');
-            $('#highCel').text(highCel + '\xB0C');
-            $('#minFah').text(minFah + '\xB0F');
-            $('#minCel').text(minCel + '\xB0C');
+            $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
+            $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel+ '\xB0C' );
+            $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
 
             //console.log(response)
            
