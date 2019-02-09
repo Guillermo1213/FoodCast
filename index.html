@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <sript src=https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js> </sript> <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <title>FoodCast</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid" id="upper_display">
+        <div id="header">
+            <h1 class="logo display-4">FoodCast</h1>
+            <img src="https://dummyimage.com/50x50/000/fff">
+        </div>
+        <div id="search_area">
+            <input type="text" class="form-control" id="searchInput" placeholder="Ex: Los Angeles, US">
+            <button type="submit" id="searchLocation" class="btn btn-dark btn-sm">Search</button>
+            <div id="search_results">
+                <div id="resultCityName" class="results">
+
+                </div>
+                <div id="weatherIcon" class="results">
+                    <img id="icon" src="" alt="Current Weather Icon" class="img-thumbnail">
+                </div>
+                <div id="currentTemp" class="results">
+
+                </div>
+                <div id="currentWeather" class="results">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="lower_display">
+        <header id="suggestion_header"> We suggest </header>
+        <div class="card-deck">
+            <div class="card" style="width: 18rem;" id="yelpCard">
+            </div>
+            <div class="card" style="width: 18rem;" id="yelpCard">
+            </div>
+            <div class="card" style="width: 18rem;" id="yelpCard">
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+<script src="assets/javascript/app.js"></script>
+
+</html>
