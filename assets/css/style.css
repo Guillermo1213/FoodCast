@@ -48,6 +48,17 @@ body{
     margin: 5%;
 }
 
+.results{
+    color: aliceblue;
+    font-size: x-large;
+}
+
 #search_results{
-    display: none;
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#resultCityName{
+    text-align: center;
 }

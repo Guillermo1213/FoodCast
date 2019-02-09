@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    $('#search_results').hide();
     //================================================================================================
                                 //Search and Display Weather Info (Section 1)
     //================================================================================================
@@ -25,6 +25,7 @@ $(document).ready(function(){
             
             //Store the info that Object gives out in variables to make it easier to manipulate:
             var resultCityName = response.name;
+            var weatherCode = (response.weather[0].id);
             var weatherDescription = (response.weather[0].description).toUpperCase();
 
             //Convert temperature string in Object into integer, to plug into calculation:
@@ -41,11 +42,32 @@ $(document).ready(function(){
             var minCel = kelToC(minTemp);
 
             //Grab ID and attach temperatures to display on HTML:
-            $("#resultCityName").text(resultCityName);
+            $("#resultCityName").html(resultCityName + "<br> <H6>Weather</H6>");
             $("#currentWeather").text(weatherDescription);
             $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
             $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel+ '\xB0C' );
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
+            $('#searchInput').hide();
+            $('#searchLocation').hide();
+            $('#search_results').show();
+
+            //if statement for weather background and icon
+            // var codeCheck = str.startsWith;
+            console.log(weatherCode);
+            
+            // if(codeCheck("2")){
+                
+            // } else if(codeCheck("3")){
+
+            // } else if(codeCheck("4")){
+            
+            // } else if(codeCheck("5")){
+
+            // } else if(codeCheck("6")){
+
+            // } else if(codeCheck("7")){
+
+            // } else if(codeCheck("8")){
 
             //console.log(response)
            
