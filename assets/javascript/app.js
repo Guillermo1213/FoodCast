@@ -86,14 +86,14 @@ $(document).ready(function () {
 
             for (let i = 0; i < results.length; i++) {
                 var mainDiv = $("<div>");
-                var yelpCard = "yelpCard" + results[i]
+                //var yelpCard = "yelpCard" + results[i];
                 mainDiv.attr({
                     "class": "card",
                      "style": "width: 18rem;", 
-                     "id": yelpCard
+                     "id": "yelpCard"
                 });
 
-                var mainID = mainDiv.attr("id");
+                //var mainID = mainDiv.attr("id");
 
                 var yelpImage = $("<img>");
                 yelpImage.attr ({
@@ -103,7 +103,7 @@ $(document).ready(function () {
                     "width": "300"
                 });
 
-                $("#mainID").append(yelpImage) ;
+                $("#yelpCard").append(yelpImage) ;
 
                 var yelpDiv = $("<div>").attr({
                     "class": "card-body",
@@ -116,7 +116,8 @@ $(document).ready(function () {
                 var location = $("<p>").text("Location: " + results[i].location.address1);
                 
                 yelpDiv.append(name,rating,price,location,);
-                $("#mainID").append(yelpDiv);
+                $("#yelpCard").append(yelpDiv);
+                $("#mainCard").append(mainDiv);
            
             };
 
