@@ -48,25 +48,6 @@ $(document).ready(function(){
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
 
             //console.log(response)
-
-            var weatherCondition = '';
-            var userInput=" los angeles";
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInput,
-                "method": "GET",
-                "headers": {
-                "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
-                //   "cache-control": "no-cache",
-                //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
-                }
-            }
-
-            $.ajax(settings).done(function (response) {
-            console.log(response);
-            
             var foodHot =["ice cream","sandwiches","salads","jamba juice","juice","boba","ice tea","milk tea","slushies","fruits","parfait","ceviche","sushi","hummus","popsicles",];
             var foodCold =["hot tea","coffee","hot cocoa","hot chocolate","hot soups","ramen","spicy food","oatmeal","pot pies","casserole","pasta"];
             var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
@@ -79,13 +60,26 @@ $(document).ready(function(){
                 } else if (currentFah < 65) {
                     var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
                     return randCold;
-                };
-                
-                
+                };    
             }
-
+            hotOrCold();
             console.log(hotOrCold(currentFah));
 
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput,
+                "method": "GET",
+                "headers": {
+                "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
+                //   "cache-control": "no-cache",
+                //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            
 
             })
            
