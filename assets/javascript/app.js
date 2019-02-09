@@ -73,7 +73,7 @@ $(document).ready(function () {
             } else if (str.startsWith("800") == true) {
                 $("#icon").attr("src", "./assets/images/Icons/clear_icon.png");
                 $("#lower_display").css("background", "url(./assets/images/backgrounds/clear.jpg)");
-            } else if (str.startsWith("801") == true|| str.startsWith("802")== true|| str.startsWith("803")== true|| str.startsWith("804")==true){
+            } else if (str.startsWith("801") == true || str.startsWith("802") == true || str.startsWith("803") == true || str.startsWith("804") == true) {
                 $("#icon").attr("src", "./assets/images/Icons/clouds_icon.png");
                 $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
             }
@@ -96,26 +96,53 @@ $(document).ready(function () {
 
 
     //================================================================================================
-    //Carousel (Section 2)
+    //Restaurant Cards (Section 2)
     //================================================================================================
 
     // Create arrays of Hot/Cold food, these will be used to compare with Yelp API to spit out the restaurants that we want:
     var foodHot = ["ice cream", "sandwiches", "salads", "jamba juice", "juice", "boba", "ice tea", "milk tea", "slushies", "fruits", , "parfait", "ceviche", "sushi", , "hummus", "popsicles",]
     var foodCold = ["hot tea", "coffee", "hot cocoa", "hot chocolate", "hot soups", "ramen", "spicy food", "oatmeal", "pot pies", "casserole", "pasta"]
-    var currentTemp = '';
-    var weatherCondition = "";
-
+    var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
+    var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
+    var keyword;
     //Function to determine whether it's cold or hot. I thought about it and it's better to use current temperature to determine this.
 
-    var currentTemp = $("#currentFah");
-    var weatherCondition = '';
-    function hotOrCold(currentTemp) {
-        if (currentTemp >= 65) {
-            weatherCondition = "hot";
-        } else {
-            weatherCondition = "cold";
-
+    function hotOrCold() {
+        if (mainTemp >= 65) {
+            console.log(randHot);
+            keyword = randHot;
+            
+            
+        } else if (mainTemp <= 65){
+            console.log(randCold);
+            keyword = randCold;
+            return keyword;
         };
     };
+
+    hotOrCold();   
+
+//     // var queryBusiness = "https://api.yelp.com/v3/businesses/ApIPybnarwxkzBgbYegVWQ";
+//     // var clientID = "ApIPybnarwxkzBgbYegVWQ";
+//     // var apiKey = "IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx";
+
+//     var settings = {
+//         "async": true,
+//         "crossDomain": true,
+//         "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search" + "location=" + userInput,
+//         "method": "GET",
+//         "headers": {
+//             "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
+//             //   "cache-control": "no-cache",
+//             //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
+//         }
+//     }
+//     $.ajax(settings).done(function (response) {
+//         //Code//
+
+
+//     });
+// });//End of document ready fucntion
+ 
 
 });
