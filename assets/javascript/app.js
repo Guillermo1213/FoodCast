@@ -67,7 +67,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput,
+                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput + "&limit=5",
                 "method": "GET",
                 "headers": {
                 "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
@@ -80,15 +80,25 @@ $(document).ready(function () {
             var results = response.businesses;
 
             for (let i = 0; i < results.length; i++) {
+                var mainDiv = $("<div>");
+                var yelpCard = "yelpCard" + results[i]
+                mainDiv.attr({
+                    "class": "card",
+                     "style": "width: 18rem;", 
+                     "id": yelpCard
+                });
+
+                var mainID = mainDiv.attr("id");
+
                 var yelpImage = $("<img>");
                 yelpImage.attr ({
                     "src": results[i].image_url,
                     "class": "card-img-top",
-                    "height": "200",
+                    "height": "250",
                     "width": "300"
                 });
 
-                $("#yelpCard").append(yelpImage) ;
+                $("#mainID").append(yelpImage) ;
 
                 var yelpDiv = $("<div>").attr({
                     "class": "card-body",
@@ -96,12 +106,12 @@ $(document).ready(function () {
                 });
 
                 var name = $("<p>").text("Name: " + results[i].name);
-                var rating = $("<p>").text("Raiting: " + results[i].rating);
+                var rating = $("<p>").text("Raiting: " + results[i].rating + " / 5");
                 var price = $("<p>").text("Price: " + results[i].price);  
                 var location = $("<p>").text("Location: " + results[i].location.address1);
                 
                 yelpDiv.append(name,rating,price,location,);
-                $("#yelpCard").append(yelpDiv);
+                $("#mainID").append(yelpDiv);
            
             };
 
