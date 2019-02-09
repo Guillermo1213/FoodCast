@@ -1,5 +1,8 @@
 $(document).ready(function () {
     $('#search_results').hide();
+    $('#restaurant_cards').hide();
+    $('#suggestion_header').hide();
+
     //================================================================================================
     //Search and Display Weather Info (Section 1)
     //================================================================================================
@@ -76,7 +79,9 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response) {
             console.log(response);
-
+            $('#restaurant_cards').show();
+            $('#suggestion_header').show();
+            $('#suggestion_header').append(hotOrCold(currentFah) +" from:");
             var results = response.businesses;
 
             for (let i = 0; i < results.length; i++) {
