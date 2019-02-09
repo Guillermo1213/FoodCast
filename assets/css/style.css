@@ -33,6 +33,7 @@ body{
 
 #lower_display{
     display: flex;
+    flex-direction: column;
     padding: 15vh;
     justify-content: center;
     background: url(../images/backgrounds/home.jpg);
@@ -61,4 +62,16 @@ body{
 
 #resultCityName{
     text-align: center;
+}
+#suggestion_header{
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: block;
+}
+
+#restaurant_cards{
+    display: inline-flex;
+    justify-content: space-around;
 }
