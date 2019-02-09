@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css">
+    <script src="assets/javascript/app.js"></script>
+    
+</head>
+<body>
+    <!-- Search form -->
+    <div class="container">
+        <form class="form-inline">
+            <h3>Search</h3> 
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" id="searchInput" placeholder="Ex: Los Angeles, US">
+                <small id="searchHelp" class="form-text text-muted">Use a comma ( , ) to separate the city and country for more accurate search!</small>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" id="searchLocation">Search</button>
+        </form>
+    </div>
+
+    <br>
+    <!-- Weather Info Card -->
+    <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="sunny.jpg" alt="sunny_weather" height="200" width="300">
+            <div class="card-body">
+                <h2 class="card-title" id="resultCityName">City Name</h2>
+                <h3 class="card-title">Current: <span id="currentFah"></span> / <span id="currentCel"></span></h3>
+                
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="currentWeather">Clear Sky</li>
+                <li class="list-group-item">High: <span id="highFah"></span> / <span id="highCel"></span></li>
+                <li class="list-group-item">Low: <span id="minFah"></span> / <span id="minCel"></span></li>
+            </ul>
+          </div>
+
+</body>
+</html>
