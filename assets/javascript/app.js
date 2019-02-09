@@ -1,28 +1,28 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('#search_results').hide();
     //================================================================================================
-                                //Search and Display Weather Info (Section 1)
+    //Search and Display Weather Info (Section 1)
     //================================================================================================
 
-    $(document).on("click", "#searchLocation", function(event){ //when user clicks the search button
+    $(document).on("click", "#searchLocation", function (event) { //when user clicks the search button
         event.preventDefault(); //prevents the form from submitting itself
         var userInput = $("#searchInput").val().trim(); //retrieve the texts that user inputs
-        var inputArr = userInput.split(",") 
+        var inputArr = userInput.split(",")
         //userInput is a string of city and country, we need to split the string at the comma, into an array that contains
         //2 items: city and country. Do a console.log(inputArr) --> ["los angeles", "us"] --> this is what we want for the Weather API ajax call
-        
+
         //Store each index into a var to plug into the query URL later:
         var cityName = inputArr[0];
         var country = inputArr[1];
         var apiKey1 = "c6ab9da6663a3be45b9f754658c32b90";
         var queryWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "," + country + "&appid=" + apiKey1;
-        
+
         //Now we do the Weather ajax call:
         $.ajax({
             url: queryWeather,
             method: "GET"
-        }).then(function(response) {
-            
+        }).then(function (response) {
+
             //Store the info that Object gives out in variables to make it easier to manipulate:
             var resultCityName = response.name;
             var weatherCode = (response.weather[0].id);
@@ -30,9 +30,9 @@ $(document).ready(function(){
 
             //Convert temperature string in Object into integer, to plug into calculation:
             var mainTemp = parseInt(response.main.temp);
-            var highTemp= parseInt(response.main.temp_max);
-            var minTemp= parseInt(response.main.temp_min);
-            
+            var highTemp = parseInt(response.main.temp_max);
+            var minTemp = parseInt(response.main.temp_min);
+
             //Convert Kelvin into Fahrenheit and Celcius:
             var currentFah = kelToF(mainTemp);
             var currentCel = kelToC(mainTemp);
@@ -45,33 +45,42 @@ $(document).ready(function(){
             $("#resultCityName").html(resultCityName + "<br> <H6>Weather</H6>");
             $("#currentWeather").text(weatherDescription);
             $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
-            $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel+ '\xB0C' );
+            $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel + '\xB0C');
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
             $('#searchInput').hide();
             $('#searchLocation').hide();
             $('#search_results').show();
 
             //if statement for weather background and icon
-            // var codeCheck = str.startsWith;
             console.log(weatherCode);
-            
-            // if(codeCheck("2")){
-                
-            // } else if(codeCheck("3")){
+            var str = String(weatherCode);
 
-            // } else if(codeCheck("4")){
-            
-            // } else if(codeCheck("5")){
-
-            // } else if(codeCheck("6")){
-
-            // } else if(codeCheck("7")){
-
-            // } else if(codeCheck("8")){
+            if (str.startsWith("2") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/thunderstorm_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/thunderstorm.jpg)");
+            } else if (str.startsWith("3") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/drizzle_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/drizzle.jpg)");
+            } else if (str.startsWith("5") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/rain_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/rain.jpg)");
+            } else if (str.startsWith("6") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/snow_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/snow.jpg)");
+            } else if (str.startsWith("7") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/atmosphere_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/atmosphere.jpg)");
+            } else if (str.startsWith("800") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/clear_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/clear.jpg)");
+            } else if (str.startsWith("801") == true|| str.startsWith("802")== true|| str.startsWith("803")== true|| str.startsWith("804")==true){
+                $("#icon").attr("src", "./assets/images/Icons/clouds_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
+            }
 
             //console.log(response)
-           
-        }); 
+
+        });
     });
 
     //The Weather API gives out temperature in Kelvin, we need to convert it to Fahrenheit and Celcius
@@ -84,15 +93,15 @@ $(document).ready(function(){
     };
     //END OF SECTION 1
     //=================
-                                
+
 
     //================================================================================================
-                                //Carousel (Section 2)
+    //Carousel (Section 2)
     //================================================================================================
 
     // Create arrays of Hot/Cold food, these will be used to compare with Yelp API to spit out the restaurants that we want:
-    var foodHot =["ice cream","sandwiches","salads","jamba juice","juice","boba","ice tea","milk tea","slushies","fruits",,"parfait","ceviche","sushi",,"hummus","popsicles",]
-    var foodCold =["hot tea","coffee","hot cocoa","hot chocolate","hot soups","ramen","spicy food","oatmeal","pot pies","casserole","pasta"]
+    var foodHot = ["ice cream", "sandwiches", "salads", "jamba juice", "juice", "boba", "ice tea", "milk tea", "slushies", "fruits", , "parfait", "ceviche", "sushi", , "hummus", "popsicles",]
+    var foodCold = ["hot tea", "coffee", "hot cocoa", "hot chocolate", "hot soups", "ramen", "spicy food", "oatmeal", "pot pies", "casserole", "pasta"]
     var currentTemp = '';
     var weatherCondition = "";
 
@@ -100,12 +109,12 @@ $(document).ready(function(){
 
     var currentTemp = $("#currentFah");
     var weatherCondition = '';
-    function hotOrCold(currentTemp){
-        if (currentTemp >= 65){
+    function hotOrCold(currentTemp) {
+        if (currentTemp >= 65) {
             weatherCondition = "hot";
         } else {
             weatherCondition = "cold";
-            
+
         };
     };
 
