@@ -50,6 +50,30 @@ $(document).ready(function () {
             $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
             $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel + '\xB0C');
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
+            var str = String(weatherCode);
+
+            if (str.startsWith("2") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/thunderstorm_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/thunderstorm.jpg)");
+            } else if (str.startsWith("3") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/drizzle_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/drizzle.jpg)");
+            } else if (str.startsWith("5") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/rain_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/rain.jpg)");
+            } else if (str.startsWith("6") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/snow_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/snow.jpg)");
+            } else if (str.startsWith("7") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/atmosphere_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/atmosphere.jpg)");
+            } else if (str.startsWith("800") == true) {
+                $("#icon").attr("src", "./assets/images/Icons/clear_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/clear.jpg)");
+            } else if (str.startsWith("801") == true|| str.startsWith("802")== true|| str.startsWith("803")== true|| str.startsWith("804")==true){
+                $("#icon").attr("src", "./assets/images/Icons/clouds_icon.png");
+                $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
+            }
 
             var str = String(weatherCode);
             
@@ -104,9 +128,12 @@ $(document).ready(function () {
 
             $.ajax(settings).done(function (response) {
             console.log(response);
+            $('#form').hide();
+            $('#search_results').show();
             $('#restaurant_cards').show();
             $('#suggestion_header').show();
             $('#suggestion_header').append(hotOrCold(currentFah) +" from:");
+        
             var results = response.businesses;
 
             for (let i = 0; i < results.length; i++) {

@@ -4,14 +4,12 @@ body{
 }
 
 #header{
-    display: inline-flex;
     float: left;
     margin: 2%;
 }
 
-.logo{
-    margin: 2%;
-    color: aliceblue;
+#logo{
+    max-width: 35%;
 }
 
 #search_area{
@@ -23,7 +21,7 @@ body{
     max-width: 40vw;
 }
 
-.jumbotron{
+#upper_display{
     margin: 0 0;
     display: flex;
     align-content: center;
