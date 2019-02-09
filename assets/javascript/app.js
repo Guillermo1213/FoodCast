@@ -48,6 +48,46 @@ $(document).ready(function(){
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
 
             //console.log(response)
+
+            var weatherCondition = '';
+            var userInput=" los angeles";
+
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInput,
+                "method": "GET",
+                "headers": {
+                "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
+                //   "cache-control": "no-cache",
+                //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
+                }
+            }
+
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            
+            var foodHot =["ice cream","sandwiches","salads","jamba juice","juice","boba","ice tea","milk tea","slushies","fruits","parfait","ceviche","sushi","hummus","popsicles",];
+            var foodCold =["hot tea","coffee","hot cocoa","hot chocolate","hot soups","ramen","spicy food","oatmeal","pot pies","casserole","pasta"];
+            var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
+            var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
+
+            function hotOrCold(currentFah){
+                if (currentFah >= 65){
+                    var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
+                    return randHot;
+                } else if (currentFah < 65) {
+                    var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
+                    return randCold;
+                };
+                
+                
+            }
+
+            console.log(hotOrCold(currentFah));
+
+
+            })
            
         }); 
     });
@@ -68,23 +108,59 @@ $(document).ready(function(){
                                 //Carousel (Section 2)
     //================================================================================================
 
-    // Create arrays of Hot/Cold food, these will be used to compare with Yelp API to spit out the restaurants that we want:
-    var foodHot =["ice cream","sandwiches","salads","jamba juice","juice","boba","ice tea","milk tea","slushies","fruits",,"parfait","ceviche","sushi",,"hummus","popsicles",]
-    var foodCold =["hot tea","coffee","hot cocoa","hot chocolate","hot soups","ramen","spicy food","oatmeal","pot pies","casserole","pasta"]
-    var currentTemp = '';
-    var weatherCondition = "";
+    // // Create arrays of Hot/Cold food, these will be used to compare with Yelp API to spit out the restaurants that we want:
+    // var foodHot =["ice cream","sandwiches","salads","jamba juice","juice","boba","ice tea","milk tea","slushies","fruits",,"parfait","ceviche","sushi",,"hummus","popsicles",]
+    // var foodCold =["hot tea","coffee","hot cocoa","hot chocolate","hot soups","ramen","spicy food","oatmeal","pot pies","casserole","pasta"]
+    // var currentTemp = '';
+    // var weatherCondition = "";
 
-    //Function to determine whether it's cold or hot. I thought about it and it's better to use current temperature to determine this.
+    // //Function to determine whether it's cold or hot. I thought about it and it's better to use current temperature to determine this.
 
-    var currentTemp = $("#currentFah");
-    var weatherCondition = '';
-    function hotOrCold(currentTemp){
-        if (currentTemp >= 65){
-            weatherCondition = "hot";
-        } else {
-            weatherCondition = "cold";
+    // var currentTemp = $("#currentFah");
+    
+    // function hotOrCold(currentTemp){
+    //     if (currentTemp >= 65){
+    //         weatherCondition = "hot";
+    //     } else {
+    //         weatherCondition = "cold";
             
-        };
-    };
+    //     };
+    // };
+
+    //Yelp: Comments, location, ratings, price range//
+    // var queryBusiness = "https://api.yelp.com/v3/businesses/ApIPybnarwxkzBgbYegVWQ";
+    // var clientID = "ApIPybnarwxkzBgbYegVWQ";
+    // var apiKey = "IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx";
+    // var userInput=" los angeles";
+
+    // var settings = {
+    //     "async": true,
+    //     "crossDomain": true,
+    //     "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + userInput,
+    //     "method": "GET",
+    //     "headers": {
+    //     "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
+    //     //   "cache-control": "no-cache",
+    //     //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
+    //     }
+    // }
+
+    // $.ajax(settings).done(function (response) {
+    // console.log(response);
+    
+    // function hotOrCold(mainTemp){
+    //     if (mainTemp >= 65){
+    //         weatherCondition = "hot";
+    //     } else if (mainTemp < 65) {
+    //         weatherCondition = "cold";
+    //     }
+    //     return weatherCondition
+    // }
+
+
+
+    // })
+
+
 
 });
