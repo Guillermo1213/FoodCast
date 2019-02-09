@@ -56,10 +56,8 @@ $(document).ready(function () {
 
             function hotOrCold(currentFah){
                 if (currentFah >= 65){
-                    var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
                     return randHot;
                 } else if (currentFah < 65) {
-                    var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
                     return randCold;
                 };    
             }
@@ -73,8 +71,6 @@ $(document).ready(function () {
                 "method": "GET",
                 "headers": {
                 "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
-                //   "cache-control": "no-cache",
-                //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
                 }
             }
 
@@ -100,22 +96,6 @@ $(document).ready(function () {
           };
 
             })
-
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + "soup" + "&location=" + userInput,
-                "method": "GET",
-                "headers": {
-                "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
-                //   "cache-control": "no-cache",
-                //   "Postman-Token": "e57859a1-5f70-487b-85b7-14a613f5d005"
-                }
-            }
-
-            $.ajax(settings).done(function (response) {
-            console.log(response);
-            
            
         }); 
     });
