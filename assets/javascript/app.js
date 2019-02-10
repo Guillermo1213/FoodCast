@@ -119,7 +119,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput + "&limit=5",
+                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput + "&limit=4",
                 "method": "GET",
                 "headers": {
                     "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
@@ -144,18 +144,19 @@ $(document).ready(function () {
                     var cardImg = $("<img>");
                     var cardBody = $("<div>");
 
-                    newCard.attr({
-                        "class": "card newCard",
-                        "width": "20vw",
-                        "height": "30vh"
-                    });
-                    newCard.append(cardImg);
                     cardImg.attr({
                         "src": results[i].image_url,
                         "class": "card-img-top cardImg",
                         "width": "200 vw",
                         "height": "200 vh"
                     });
+
+                    newCard.attr({
+                        "class": "card newCard col-sm-3",
+                    });
+                    newCard.append(cardImg);
+
+                    
                     newCard.append(cardBody);
                     cardBody.append(name);
                     cardBody.append(rating);
@@ -165,6 +166,23 @@ $(document).ready(function () {
 
 
                     $('#mainID').append(newCard);
+
+                    function mobileResponsive(x) {
+                        if (x.matches) { // If media query matches
+                            newCard.attr({
+                                "class": "card newCard col-sm-12",
+                                "text-align": "center"
+                            });
+                        } else {
+                            newCard.attr({
+                                "class": "card newCard col-sm-3"
+                            });
+                        }
+                      }
+                      
+                      var x = window.matchMedia("(max-width: 750px)")
+                      mobileResponsive(x) // Call listener function at run time
+                      x.addListener(mobileResponsive) // Attach listener function on state changes
                 }
 
                 // for (let i = 0; i < results.length; i++) {

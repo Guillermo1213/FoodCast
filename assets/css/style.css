@@ -30,7 +30,7 @@ body{
 }
 
 #lower_display{
-    display: flex;
+    display: box;
     flex-direction: column;
     justify-content: center;
     background: url(../images/backgrounds/home.jpg);
@@ -50,6 +50,7 @@ body{
 #resultCityName{
     text-align: center;
 }
+
 #suggestion_header{
     font-size: xx-large;
     font-weight: bold;
@@ -58,15 +59,23 @@ body{
     display: block;
 }
 
-.container {
-    align-items: center;
-}
-
 #mainID {
-    justify-content: space-evenly;
     display: inline-flex;
 }
 
-#newCard {
-    margin: auto;
+.cardImg {
+    padding-top: 10px;
 }
+
+@media only screen and (max-width: 750px) {
+    #mainID {
+        display: block;
+        margin: auto;
+        width: 60%;
+        padding: 10px;
+    }
+
+}
+ 
+
+
