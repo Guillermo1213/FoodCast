@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $('#search_results').hide();
-    $('#restaurant_cards').hide();
     $('#suggestion_header').hide();
 
     //================================================================================================
@@ -50,8 +49,9 @@ $(document).ready(function () {
             $("#currentTemp").text(currentFah + '\xB0F' + ' / ' + currentCel + '\xB0C');
             $('#highTemp').text(highFah + '\xB0F' + ' / ' + highCel + '\xB0C');
             $('#minTemp').text(minFah + '\xB0F' + ' / ' + minCel + '\xB0C');
+            
+            // If/Else statement to determine which background to display based on current weather
             var str = String(weatherCode);
-
             if (str.startsWith("2") == true) {
                 $("#icon").attr("src", "./assets/images/Icons/thunderstorm_icon.png");
                 $("#lower_display").css("background", "url(./assets/images/backgrounds/thunderstorm.jpg)");
@@ -75,36 +75,11 @@ $(document).ready(function () {
                 $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
             }
 
-            var str = String(weatherCode);
-
-            if (str.startsWith("2") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/thunderstorm_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/thunderstorm.jpg)");
-            } else if (str.startsWith("3") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/drizzle_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/drizzle.jpg)");
-            } else if (str.startsWith("5") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/rain_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/rain.jpg)");
-            } else if (str.startsWith("6") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/snow_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/snow.jpg)");
-            } else if (str.startsWith("7") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/atmosphere_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/atmosphere.jpg)");
-            } else if (str.startsWith("800") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/clear_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/clear.jpg)");
-            } else if (str.startsWith("801") == true || str.startsWith("802") == true || str.startsWith("803") == true || str.startsWith("804") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/clouds_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
-            }
-
-            //console.log(response)
+            // Function to determine which food to suggest based on current weather
             var foodHot = ["ice cream", "sandwiches", "salads", "jamba juice", "juice", "boba", "ice tea", "milk tea", "slushies", "fruits", "parfait", "ceviche", "sushi", "hummus", "popsicles",];
-            var foodCold = ["hot tea", "coffee", "hot cocoa", "hot chocolate", "hot soups", "ramen", "spicy food", "oatmeal", "pot pies", "casserole", "pasta"];
-            var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
-            var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
+            var foodCold = ["tea", "coffee", "hot cocoa", "hot chocolate", "soups", "ramen", "spicy food", "oatmeal", "pot pie", "pho", "pasta"];
+            var randHot = foodHot[Math.floor(Math.random() * foodHot.length)]; //randomly pick a food item from foodHot list
+            var randCold = foodCold[Math.floor(Math.random() * foodCold.length)]; //randomly pick a food item from foodCold list
 
             function hotOrCold(currentFah) {
                 if (currentFah >= 65) {
@@ -114,8 +89,8 @@ $(document).ready(function () {
                 };
             }
             hotOrCold();
-            console.log(hotOrCold(currentFah));
 
+            // Yelp ajax call
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -133,22 +108,34 @@ $(document).ready(function () {
                 $('#suggestion_header').show();
                 $('#suggestion_header').append(hotOrCold(currentFah) + " from:");
 
+                // Create new card for each image pulled from Yelp
                 var results = response.businesses;
-
                 for (let i = 0; i < results.length; i++) {
-                    var name = $("<p>").text("Name: " + results[i].name);
-                    var rating = $("<p>").text("Raiting: " + results[i].rating + " / 5");
+                    // Create <a> link that contains restaurant's address and allows user to click on 
+                    //to switch to Google Maps for driving directions:
+                    var anchorAdress = document.createElement("a");
+                    var address = (results[i].location.display_address).join(', ');
+                    var linkText = document.createTextNode(address);
+                    var link = "https://maps.google.com/?q=" + address;
+                    anchorAdress.target = "_blank"; //open link in new page
+                    anchorAdress.appendChild(linkText);
+                    anchorAdress.href = link;
+
+                    var name = $("<h3>").text(results[i].name);
+                    var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
+                    var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
                     var price = $("<p>").text("Price: " + results[i].price);
-                    var location = $("<p>").text("Location: " + results[i].location.address1);
                     var newCard = $("<div>");
                     var cardImg = $("<img>");
                     var cardBody = $("<div>");
 
+                    //New img div will have these attributes
                     cardImg.attr({
                         "src": results[i].image_url,
                         "class": "card-img-top cardImg",
                         "width": "200 vw",
-                        "height": "200 vh"
+                        "height": "200 vh",
+                        "style": "object-fit: cover"
                     });
 
                     newCard.attr({
@@ -156,14 +143,13 @@ $(document).ready(function () {
                     });
                     newCard.append(cardImg);
 
-                    
                     newCard.append(cardBody);
                     cardBody.append(name);
+                    cardBody.append(anchorAdress);
                     cardBody.append(rating);
+                    cardBody.append(reviews);
                     cardBody.append(price);
-                    cardBody.append(location);
-
-
+                    
 
                     $('#mainID').append(newCard);
 
@@ -184,46 +170,12 @@ $(document).ready(function () {
                       mobileResponsive(x) // Call listener function at run time
                       x.addListener(mobileResponsive) // Attach listener function on state changes
                 }
-
-                // for (let i = 0; i < results.length; i++) {
-                //     var mainDiv = $("<div>");
-                //     var cardContainer= $('.container');
-                //     var yelpCard = "yelpCard" + results[i]
-                //     mainDiv.attr({
-                //         "class": "card",
-                //          "style": "width: 18rem;", 
-                //          "id": yelpCard
-                //     });
-
-                //     var yelpImage = $("<img>");
-                //     yelpImage.attr ({
-                //         "src": results[i].image_url,
-                //         "class": "card-img-top",
-                //         "height": "250",
-                //         "width": "300"
-                //     });
-
-                //     $("#mainID").append(yelpImage) ;
-
-                //     var yelpDiv = $("<div>").attr({
-                //         "class": "card-body",
-                //         "id": "yelpInfo"
-                //     });
-
-                //     var name = $("<p>").text("Name: " + results[i].name);
-                //     var rating = $("<p>").text("Raiting: " + results[i].rating + " / 5");
-                //     var price = $("<p>").text("Price: " + results[i].price);  
-                //     var location = $("<p>").text("Location: " + results[i].location.address1);
-
-                //     yelpDiv.append(name,rating,price,location,);
-                //     $("#mainID").append(yelpDiv);
-
-                // };
                 $('#restaurant_cards').show();
             });
 
         });
     });
+
     //The Weather API gives out temperature in Kelvin, we need to convert it to Fahrenheit and Celcius
     function kelToF(kelvin) {
         return Math.floor((kelvin * 9 / 5 - 459.67)); //round down to whole integer using Math.floor()

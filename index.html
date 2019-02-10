@@ -22,7 +22,7 @@
                 <input type="text" class="form-control" id="searchInput" placeholder="Ex: Los Angeles, US">
                 <button type="submit" id="searchLocation" class="btn btn-dark btn-sm">Search</button>
             </div>
-            <div id="search_results">
+            <div class="container-fluid" id="search_results">
                 <div id="resultCityName" class="results">
                 </div>
                 <div id="weatherIcon" class="results">
@@ -37,10 +37,8 @@
     </div>
 
     <div id="lower_display">
-        <div class="container d-block" id="restaurant_cards">
-            <header id="suggestion_header">We suggest </header>
-            <div  id="mainID"></div>
-        </div>
+            <header id="suggestion_header">This weather calls for </header>
+            <div class="container-fluid" id="mainID"></div>
     </div>
 </body>
 <script src="assets/javascript/app.js"></script>
