@@ -16,7 +16,7 @@ body{
 
 #form{
     display: inline-flex;
-    max-width: 50vw;
+    width: 50vw;
 }
 
 #upper_display{
