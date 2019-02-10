@@ -3,22 +3,20 @@ body{
     flex-direction: column;
 }
 
-#header{
-    float: left;
-    margin: 2%;
-}
-
 #logo{
+    float: left;
     max-width: 35%;
 }
 
 #search_area{
+    margin: 2%;
     display: inline-flex;
     justify-content: center;
 }
 
-.form-control{
-    max-width: 40vw;
+#form{
+    display: inline-flex;
+    max-width: 50vw;
 }
 
 #upper_display{
@@ -30,6 +28,7 @@ body{
 }
 
 #lower_display{
+    align-self: stretch;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,18 +37,18 @@ body{
 
 .results{
     color: aliceblue;
-    font-size: x-large;
+    font-size: 3vw;
 }
 
 #search_results{
     display: inline-flex;
     justify-content: space-evenly;
-    width: 100%;
 }
 
 #resultCityName{
     text-align: center;
 }
+
 #suggestion_header{
     font-size: xx-large;
     font-weight: bold;
@@ -63,7 +62,7 @@ body{
 }
 
 #mainID {
-    justify-content: space-evenly;
+    justify-content: space-between;
     display: inline-flex;
 }
 

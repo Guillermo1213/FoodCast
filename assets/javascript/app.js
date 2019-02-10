@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $('#search_results').hide();
-    $('#restaurant_cards').hide();
     $('#suggestion_header').hide();
 
     //================================================================================================
@@ -75,34 +74,9 @@ $(document).ready(function () {
                 $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
             }
 
-            var str = String(weatherCode);
-
-            if (str.startsWith("2") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/thunderstorm_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/thunderstorm.jpg)");
-            } else if (str.startsWith("3") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/drizzle_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/drizzle.jpg)");
-            } else if (str.startsWith("5") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/rain_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/rain.jpg)");
-            } else if (str.startsWith("6") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/snow_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/snow.jpg)");
-            } else if (str.startsWith("7") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/atmosphere_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/atmosphere.jpg)");
-            } else if (str.startsWith("800") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/clear_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/clear.jpg)");
-            } else if (str.startsWith("801") == true || str.startsWith("802") == true || str.startsWith("803") == true || str.startsWith("804") == true) {
-                $("#icon").attr("src", "./assets/images/Icons/clouds_icon.png");
-                $("#lower_display").css("background", "url(./assets/images/backgrounds/clouds.jpg)");
-            }
-
             //console.log(response)
             var foodHot = ["ice cream", "sandwiches", "salads", "jamba juice", "juice", "boba", "ice tea", "milk tea", "slushies", "fruits", "parfait", "ceviche", "sushi", "hummus", "popsicles",];
-            var foodCold = ["hot tea", "coffee", "hot cocoa", "hot chocolate", "hot soups", "ramen", "spicy food", "oatmeal", "pot pies", "casserole", "pasta"];
+            var foodCold = ["tea", "coffee", "hot cocoa", "hot chocolate", "soups", "ramen", "spicy food", "oatmeal", "pot pie", "pho", "pasta"];
             var randHot = foodHot[Math.floor(Math.random() * foodHot.length)];
             var randCold = foodCold[Math.floor(Math.random() * foodCold.length)];
 
@@ -152,9 +126,10 @@ $(document).ready(function () {
                     newCard.append(cardImg);
                     cardImg.attr({
                         "src": results[i].image_url,
-                        "class": "card-img-top cardImg",
+                        "class": "card-img-top img-fluid cardImg",
                         "width": "200 vw",
-                        "height": "200 vh"
+                        "height": "200 vh",
+                        "style": "object-fit: cover"
                     });
                     newCard.append(cardBody);
                     cardBody.append(name);
@@ -167,40 +142,7 @@ $(document).ready(function () {
                     $('#mainID').append(newCard);
                 }
 
-                // for (let i = 0; i < results.length; i++) {
-                //     var mainDiv = $("<div>");
-                //     var cardContainer= $('.container');
-                //     var yelpCard = "yelpCard" + results[i]
-                //     mainDiv.attr({
-                //         "class": "card",
-                //          "style": "width: 18rem;", 
-                //          "id": yelpCard
-                //     });
 
-                //     var yelpImage = $("<img>");
-                //     yelpImage.attr ({
-                //         "src": results[i].image_url,
-                //         "class": "card-img-top",
-                //         "height": "250",
-                //         "width": "300"
-                //     });
-
-                //     $("#mainID").append(yelpImage) ;
-
-                //     var yelpDiv = $("<div>").attr({
-                //         "class": "card-body",
-                //         "id": "yelpInfo"
-                //     });
-
-                //     var name = $("<p>").text("Name: " + results[i].name);
-                //     var rating = $("<p>").text("Raiting: " + results[i].rating + " / 5");
-                //     var price = $("<p>").text("Price: " + results[i].price);  
-                //     var location = $("<p>").text("Location: " + results[i].location.address1);
-
-                //     yelpDiv.append(name,rating,price,location,);
-                //     $("#mainID").append(yelpDiv);
-
-                // };
                 $('#restaurant_cards').show();
             });
 
