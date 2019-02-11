@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#search_results').hide();
     $('#suggestion_header').hide();
+    $('#restaurant_card').hide();
 
     //================================================================================================
     //Search and Display Weather Info (Section 1)
@@ -128,7 +129,7 @@ $(document).ready(function () {
                             "height": "300px"
                         });
                         var textCard = $("<div>").attr("class", "carousel-caption d-md-block");
-                        var name = $("<h3>").text(results[i].name);
+                        var name = $("<h6>").text(results[i].name);
                         var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
                         var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
                         var price = $("<p>").text("Price: " + results[i].price);
@@ -150,7 +151,7 @@ $(document).ready(function () {
                             "height": "300px"
                         });
                         var textCard = $("<div>").attr("class", "carousel-caption d-md-block");
-                        var name = $("<h3>").text(results[i].name);
+                        var name = $("<h4>").text(results[i].name);
                         var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
                         var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
                         var price = $("<p>").text("Price: " + results[i].price);
@@ -164,27 +165,24 @@ $(document).ready(function () {
                         newCard.append(textCard);
                         $("#mainID").append(newCard);
 
-                    }
+                    };
 
-                //     function mobileResponsive(x) {
-                //         if (x.matches) { // If media query matches
-                //             newCard.attr({
-                //                 "class": "card newCard col-sm-12",
-                //                 "text-align": "center"
-                //             });
-                //         } else {
-                //             newCard.attr({
-                //                 "class": "card newCard col-sm-3"
-                //             });
-                //         }
-                //       }
+                    $('#restaurant_card').show();
+
+                    function mobileResponsive(x) {
+                        if (x.matches) { // If media query matches
+                            $(".col-lg-6").attr("class", "col-md-6")
+                            
+                        } else {
+                            $(".col-lg-6").attr("class", "col-lg-6")
+                        }
+                      }
                       
-                //       var x = window.matchMedia("(max-width: 750px)")
-                //       mobileResponsive(x) // Call listener function at run time
-                //       x.addListener(mobileResponsive) // Attach listener function on state changes
-                // }
-                $('#restaurant_cards').show();
-                }
+                        var x = window.matchMedia("(max-width: 750px)")
+                        mobileResponsive(x) // Call listener function at run time
+                        x.addListener(mobileResponsive) // Attach listener function on state changes
+                    }
+            
             });
 
         

@@ -8,11 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>FoodCast</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/carousel.css">
 </head>
 
 <body>
     <!-- Weather Card -->
+<div class="container">
     <div class="jumbotron jumbotron-fluid" id="upper_display">
         <div id="header">
             <img id="logo" src="assets/images/Icons/output-onlinepngtools.png">
@@ -25,7 +26,7 @@
             </div>
 
             <div class="container-fluid" id="search_results">
-                <div id="resultCityName" class="results">
+                <div id="resultCityName" class="results"></div>
             </div>
 
             <div id="weatherIcon" class="results">
@@ -37,13 +38,12 @@
             <div id="currentWeather" class="results"></div>
         </div>
     </div>
-    </div>
 
     <!-- Carousel Yelp Card -->
     <div class="container-fluid" id="lower_display">
         <header id="suggestion_header">This weather calls for </header>
         <br>
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="restaurant_card">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -67,6 +67,8 @@
             </div>
         </div>
     </div>
+    <br>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
