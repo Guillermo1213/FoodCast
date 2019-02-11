@@ -94,7 +94,7 @@ $(document).ready(function () {
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput + "&limit=4",
+                "url": "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=" + hotOrCold(currentFah) + "&location=" + userInput + "&limit=5",
                 "method": "GET",
                 "headers": {
                     "Authorization": "Bearer IwHA5UrtrqeH3DqL3fwQN8s8J-1Z60jBP2IcLJSmKQ5i3aQKWWlYTNGj4KyaMLuI7dSg1WMi9lTGHv6c2aoKm8S85gilFYXJSbWbZA0dNUKEu-PzQq57PfMfhP5YXHYx",
@@ -113,65 +113,81 @@ $(document).ready(function () {
                 for (let i = 0; i < results.length; i++) {
                     // Create <a> link that contains restaurant's address and allows user to click on 
                     //to switch to Google Maps for driving directions:
-                    var anchorAdress = document.createElement("a");
+                    var anchorAddress = document.createElement("a");
                     var address = (results[i].location.display_address).join(', ');
                     var linkText = document.createTextNode(address);
                     var link = "https://maps.google.com/?q=" + address;
-                    anchorAdress.target = "_blank"; //open link in new page
-                    anchorAdress.appendChild(linkText);
-                    anchorAdress.href = link;
+                    anchorAddress.appendChild(linkText);
+                    anchorAddress.href = link;
 
-                    var name = $("<h3>").text(results[i].name);
-                    var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
-                    var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
-                    var price = $("<p>").text("Price: " + results[i].price);
-                    var newCard = $("<div>");
-                    var cardImg = $("<img>");
-                    var cardBody = $("<div>");
+                    if (results[i] === results[0]) {
+                        var newCard = $("<div>").attr("class", "carousel-item active");
+                        var imageCard = $("<img>").attr({
+                            "src": results[i].image_url, 
+                            "class": "d-block w-100",
+                            "height": "300px"
+                        });
+                        var textCard = $("<div>").attr("class", "carousel-caption d-md-block");
+                        var name = $("<h3>").text(results[i].name);
+                        var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
+                        var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
+                        var price = $("<p>").text("Price: " + results[i].price);
 
-                    //New img div will have these attributes
-                    cardImg.attr({
-                        "src": results[i].image_url,
-                        "class": "card-img-top cardImg",
-                        "width": "200 vw",
-                        "height": "200 vh",
-                        "style": "object-fit: cover"
-                    });
+                        textCard.append(name);
+                        textCard.append(anchorAddress);
+                        textCard.append(rating);
+                        textCard.append(reviews);
+                        textCard.append(price);
+                        newCard.append(imageCard);
+                        newCard.append(textCard);
+                        $("#mainID").append(newCard);
 
-                    newCard.attr({
-                        "class": "card newCard col-sm-3",
-                    });
+                    } else {
+                        var newCard = $("<div>").attr("class", "carousel-item");
+                        var imageCard = $("<img>").attr({
+                            "src": results[i].image_url, 
+                            "class": "d-block w-100",
+                            "height": "300px"
+                        });
+                        var textCard = $("<div>").attr("class", "carousel-caption d-md-block");
+                        var name = $("<h3>").text(results[i].name);
+                        var rating = $("<p>").text("Rating: " + results[i].rating + " / 5");
+                        var reviews = $("<p>").text("Reviews: " + results[i].review_count + " customers have reviewed this venue.");
+                        var price = $("<p>").text("Price: " + results[i].price);
 
-                    newCard.append(cardImg);
-                    newCard.append(cardBody);
-                    cardBody.append(name);
-                    cardBody.append(anchorAdress);
-                    cardBody.append(rating);
-                    cardBody.append(reviews);
-                    cardBody.append(price);
-                    
+                        textCard.append(name);
+                        textCard.append(anchorAddress);
+                        textCard.append(rating);
+                        textCard.append(reviews);
+                        textCard.append(price);
+                        newCard.append(imageCard);
+                        newCard.append(textCard);
+                        $("#mainID").append(newCard);
 
-                    $('#mainID').append(newCard);
+                    }
 
-                    function mobileResponsive(x) {
-                        if (x.matches) { // If media query matches
-                            newCard.attr({
-                                "class": "card newCard col-sm-12",
-                                "text-align": "center"
-                            });
-                        } else {
-                            newCard.attr({
-                                "class": "card newCard col-sm-3"
-                            });
-                        }
-                      }
+                //     function mobileResponsive(x) {
+                //         if (x.matches) { // If media query matches
+                //             newCard.attr({
+                //                 "class": "card newCard col-sm-12",
+                //                 "text-align": "center"
+                //             });
+                //         } else {
+                //             newCard.attr({
+                //                 "class": "card newCard col-sm-3"
+                //             });
+                //         }
+                //       }
                       
-                      var x = window.matchMedia("(max-width: 750px)")
-                      mobileResponsive(x) // Call listener function at run time
-                      x.addListener(mobileResponsive) // Attach listener function on state changes
-                }
+                //       var x = window.matchMedia("(max-width: 750px)")
+                //       mobileResponsive(x) // Call listener function at run time
+                //       x.addListener(mobileResponsive) // Attach listener function on state changes
+                // }
                 $('#restaurant_cards').show();
+                }
             });
+
+        
 
         });
     });
