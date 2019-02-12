@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>FoodCast</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid" id="upper_display">
+        <div id="header">
+            <img id="logo" src="assets/images/Icons/output-onlinepngtools.png">
+        </div>
+        <div id="search_area">
+            <div id="form">
+                <input type="text" class="form-control" id="searchInput" placeholder="Ex: Los Angeles, US">
+                <button type="submit" id="searchLocation" class="btn btn-dark btn-sm">Search</button>
+            </div>
+            <div class="container-fluid" id="search_results">
+                <div id="resultCityName" class="results">
+                </div>
+                <div id="weatherIcon" class="results">
+                    <img id="icon" src="" alt="Current Weather Icon" class="img-thumbnail">
+                </div>
+                <div id="currentTemp" class="results">
+                </div>
+                <div id="currentWeather" class="results">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lower_display">
+            <header id="suggestion_header">This weather calls for </header>
+            <br>
+            <div class="container-fluid" id="mainID"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+<script src="assets/javascript/app.js"></script>
+</html>

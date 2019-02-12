@@ -1,6 +1,4 @@
 body{
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
     display: flex;
     flex-direction: column;
 }
@@ -58,23 +56,60 @@ body{
     display: block;
 }
 
-#mainID {
+/* #mainID {
     display: inline-flex;
 }
 
 .cardImg {
     padding-top: 10px;
+} */
+
+
+
+/* Styling for carousel */
+.col-lg-6 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@media only screen and (max-width: 750px) {
-    #mainID {
-        display: block;
-        margin: auto;
-        width: 60%;
-        padding: 10px;
-    }
-
+.carousel-caption {
+    background: black;
+    opacity: 0.5;
+    color: white;
+    border-radius: 15px 15px 0 0;
 }
+
+a {
+    font-size: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+}
+
+p { 
+    font-size: 11px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    line-height: 16.10px;
+    color: white;
+}
+
+
+h6 {
+    line-height: 1.2em;
+    color: white;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
  
 
 
